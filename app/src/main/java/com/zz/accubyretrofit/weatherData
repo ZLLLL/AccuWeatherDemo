@@ -1,0 +1,21 @@
+[{
+"LocalObservationDateTime":"2017-08-16T10:55:00+08:00",
+"EpochTime":1502852100,
+"WeatherText":"Thundershower",
+"WeatherIcon":15,
+"LocalSource":{
+    "Id":7,
+    "Name":"Huafeng",
+    "WeatherCode":"04"},
+"IsDayTime":true,
+"Temperature":{
+    "Metric":{
+        "Value":31.5,
+        "Unit":"C",
+        "UnitType":17},
+    "Imperial":{
+        "Value":89.0,
+        "Unit":"F",
+        "UnitType":18}},
+"MobileLink":"http://m.accuweather.com/en/cn/huicheng-district/2332599/current-weather/2332599",
+"Link":"http://www.accuweather.com/en/cn/huicheng-district/2332599/current-weather/2332599"}]

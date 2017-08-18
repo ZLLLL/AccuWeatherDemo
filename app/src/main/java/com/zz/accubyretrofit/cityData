@@ -1,0 +1,66 @@
+{
+    "Version": 1,
+    "Key": "2332599",
+    "Type": "City",
+    "Rank": 25,
+    "LocalizedName": "Huicheng District",
+    "EnglishName": "Huicheng District",
+    "PrimaryPostalCode": "",
+    "Region": {
+        "ID": "ASI",
+        "LocalizedName": "Asia",
+        "EnglishName": "Asia"
+    },
+    "Country": {
+        "ID": "CN",
+        "LocalizedName": "China",
+        "EnglishName": "China"
+    },
+    "AdministrativeArea": {
+        "ID": "44",
+        "LocalizedName": "Guangdong",
+        "EnglishName": "Guangdong",
+        "Level": 1,
+        "LocalizedType": "Province",
+        "EnglishType": "Province",
+        "CountryID": "CN"
+    },
+    "TimeZone": {
+        "Code": "CST",
+        "Name": "Asia/Shanghai",
+        "GmtOffset": 8,
+        "IsDaylightSaving": false,
+        "NextOffsetChange": null
+    },
+    "GeoPosition": {
+        "Latitude": 23.084,
+        "Longitude": 114.383,
+        "Elevation": {
+            "Metric": {
+                "Value": 33,
+                "Unit": "m",
+                "UnitType": 5
+            },
+            "Imperial": {
+                "Value": 108,
+                "Unit": "ft",
+                "UnitType": 0
+            }
+        }
+    },
+    "IsAlias": false,
+    "SupplementalAdminAreas": [
+        {
+            "Level": 2,
+            "LocalizedName": "Huizhou",
+            "EnglishName": "Huizhou"
+        }
+    ],
+    "DataSets": [
+        "AirQuality",
+        "Alerts",
+        "DailyAirQualityForecast",
+        "DailyLocalIndices",
+        "PremiumAirQuality"
+    ]
+}
