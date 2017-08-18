@@ -1,7 +1,7 @@
 package com.zz.accubyretrofit.bean.city;
 
 /**
- * Created by zhonglei on 2017/8/16.
+ * Created by user on 2017/8/16.
  */
 
 public class AdministrativeArea {

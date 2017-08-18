@@ -8,7 +8,7 @@ import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
- * Created by zhonglei on 2017/8/16.
+ * Created by user on 2017/8/16.
  */
 
 public class NetWork {
@@ -19,6 +19,8 @@ public class NetWork {
 
     private static CityApi sCityApi;
     private static WeatherApi sWeatherApi;
+    private static CityService sCityService;
+    private static WeatherService sWeatherService;
     private static OkHttpClient sOkHttpClient;
     private static GsonConverterFactory gsonConverterFactory = GsonConverterFactory.create();
     private static RxJavaCallAdapterFactory rxJavaCallAdapterFactory = RxJavaCallAdapterFactory.create();
@@ -67,6 +69,32 @@ public class NetWork {
             sCityApi = retrofit.create(CityApi.class);
         }
         return sCityApi;
+    }
+
+    public CityService getCityService() {
+        if (sCityService == null) {
+            Retrofit retrofit = new Retrofit.Builder()
+                    .baseUrl(ACCU_URL)
+                    .client(sOkHttpClient)
+                    .addConverterFactory(gsonConverterFactory)
+                    .addCallAdapterFactory(rxJavaCallAdapterFactory)
+                    .build();
+            sCityService = retrofit.create(CityService.class);
+        }
+        return sCityService;
+    }
+
+    public WeatherService getWeatherService() {
+        if (sWeatherService == null) {
+            Retrofit retrofit = new Retrofit.Builder()
+                    .baseUrl(ACCU_URL)
+                    .client(sOkHttpClient)
+                    .addConverterFactory(gsonConverterFactory)
+                    .addCallAdapterFactory(rxJavaCallAdapterFactory)
+                    .build();
+            sWeatherService = retrofit.create(WeatherService.class);
+        }
+        return sWeatherService;
     }
 
 }

@@ -12,7 +12,7 @@ import retrofit2.http.Path;
 import retrofit2.http.QueryMap;
 
 /**
- * Created by zhonglei on 2017/8/12.
+ * Created by user on 2017/8/12.
  */
 
 public interface WeatherService {

@@ -4,7 +4,7 @@ import com.zz.accubyretrofit.bean.Imperial;
 import com.zz.accubyretrofit.bean.Metric;
 
 /**
- * Created by zhonglei on 2017/8/16.
+ * Created by user on 2017/8/16.
  */
 
 public class Temperature {

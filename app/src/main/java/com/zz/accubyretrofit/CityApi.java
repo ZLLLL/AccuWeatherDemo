@@ -9,7 +9,7 @@ import retrofit2.http.QueryMap;
 import rx.Observable;
 
 /**
- * Created by zhonglei on 2017/8/16.
+ * Created by user on 2017/8/16.
  */
 
 public interface CityApi {

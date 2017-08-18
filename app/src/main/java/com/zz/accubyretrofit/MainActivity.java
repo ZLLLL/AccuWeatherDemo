@@ -19,6 +19,9 @@ import java.util.Map;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -42,10 +45,55 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         findCityByOkHttp();
-//        findCityByRetrofit();
+//        findCityByRetrofitRxJava();
     }
 
     private void findCityByRetrofit() {
+        Map<String, String> map = new HashMap<>();
+        map.put("apikey", APIKEY);
+        map.put("q", GEOLOCATION);
+        map.put("language", "en");
+        NetWork.getInstance()
+                .getCityService()
+                .getCityString(map)
+        .enqueue(new Callback<CityBean>() {
+            @Override
+            public void onResponse(Call<CityBean> call, Response<CityBean> response) {
+                String key = response.body().getKey();
+                Log.d(TAG, "onResponse: " + key);
+                currentWeatherByRetrofit(key);
+            }
+
+            @Override
+            public void onFailure(Call<CityBean> call, Throwable t) {
+                Log.e(TAG, "onFailure: " + t.getMessage());
+            }
+        });
+    }
+
+    private void currentWeatherByRetrofit(String locationKey) {
+        String language = "en";
+        Map<String, String> map = new HashMap<>();
+        map.put("apikey", APIKEY);
+        map.put("language", language);
+        map.put("details", "true");
+        NetWork.getInstance()
+                .getWeatherService()
+                .currentWeather(locationKey, map)
+                .enqueue(new Callback<List<WeatherBean>>() {
+                    @Override
+                    public void onResponse(Call<List<WeatherBean>> call, Response<List<WeatherBean>> response) {
+                        Log.d(TAG, "onResponse: " + response.body().get(0).toString());
+                    }
+
+                    @Override
+                    public void onFailure(Call<List<WeatherBean>> call, Throwable t) {
+                        Log.e(TAG, "onFailure: " + t.getMessage());
+                    }
+                });
+    }
+
+    private void findCityByRetrofitRxJava() {
         Map<String, String> map = new HashMap<>();
         map.put("apikey", APIKEY);
         map.put("q", GEOLOCATION);
@@ -63,7 +111,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                     @Override
                     public void onError(Throwable e) {
-                        Log.e(TAG, "findCityByRetrofit onError: " + e.getLocalizedMessage());
+                        Log.e(TAG, "findCityByRetrofitRxJava onError: " + e.getLocalizedMessage());
                     }
 
                     @Override
@@ -72,13 +120,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             String key = cityBean.getKey();
                             //to update weather
                             Log.d(TAG, "onNext: " + cityBean.toString());
-                            currentWeatherByRetrofit(cityBean);
+                            currentWeatherByRetrofitRxJava(cityBean);
                         }
                     }
                 });
     }
 
-    private void currentWeatherByRetrofit(CityBean cityBean) {
+    private void currentWeatherByRetrofitRxJava(CityBean cityBean) {
         String language = "en";
         Map<String, String> map = new HashMap<>();
         map.put("apikey", APIKEY);
@@ -98,7 +146,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                     @Override
                     public void onError(Throwable e) {
-                        Log.e(TAG, "currentWeatherByRetrofit onError: " + e.getMessage());
+                        Log.e(TAG, "currentWeatherByRetrofitRxJava onError: " + e.getMessage());
                     }
 
                     @Override
