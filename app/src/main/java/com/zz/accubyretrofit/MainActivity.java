@@ -25,8 +25,8 @@ import rx.schedulers.Schedulers;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private static final String APIKEY = "qtMjy8G0l680MSNi68BBCtGBGkLR1TDE";
-    private static final String GEOLOCATION = "23.036326,114.360951";
+    private static final String APIKEY = ""; //在ACCU网站申请的Key
+    private static final String GEOLOCATION = ""; //获取的定位的经纬度 格式是："经度,纬度"
     private static final String TAG = "ZLL";
     private Button mBt;
 
